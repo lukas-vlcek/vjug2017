@@ -1,0 +1,16 @@
+# Simple configuration based on Prometheus example:
+# https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus.yml
+ 
+global:
+  scrape_interval:     5s
+  evaluation_interval: 5s
+
+  external_labels:
+      monitor: 'codelab-monitor'
+
+scrape_configs:
+
+  - job_name: 'prometheus'
+
+    static_configs:
+      - targets: ['localhost:9090']
