@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 uname -a
 
 arch=`getconf LONG_BIT`
@@ -18,7 +20,6 @@ if [ "linux" != "${os_type}" ] && [ "darwin" != "${os_type}" ]; then
   exit
 fi
 
-wget ${url}
-
-echo "Extract archive:"
-echo "  tar -xvzf node_exporter..."
+rm -rf node_exporter*
+wget ${url} -O node_exporter.tar.gz
+tar -xvzf node_exporter.tar.gz
